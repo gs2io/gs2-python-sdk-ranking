@@ -33,9 +33,15 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         if params is None:
             self.__ranking_table_name = None
             self.__description = None
+            self.__put_score_trigger_script = None
+            self.__put_score_done_trigger_script = None
+            self.__calculate_ranking_done_trigger_script = None
         else:
             self.set_ranking_table_name(params['rankingTableName'] if 'rankingTableName' in params.keys() else None)
             self.set_description(params['description'] if 'description' in params.keys() else None)
+            self.set_put_score_trigger_script(params['putScoreTriggerScript'] if 'putScoreTriggerScript' in params.keys() else None)
+            self.set_put_score_done_trigger_script(params['putScoreDoneTriggerScript'] if 'putScoreDoneTriggerScript' in params.keys() else None)
+            self.set_calculate_ranking_done_trigger_script(params['calculateRankingDoneTriggerScript'] if 'calculateRankingDoneTriggerScript' in params.keys() else None)
 
     def get_ranking_table_name(self):
         """
@@ -89,4 +95,85 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         :rtype: UpdateRankingTableRequest
         """
         self.set_description(description)
+        return self
+
+    def get_put_score_trigger_script(self):
+        """
+        スコア登録時を取得
+        :return: スコア登録時
+        :rtype: unicode
+        """
+        return self.__put_score_trigger_script
+
+    def set_put_score_trigger_script(self, put_score_trigger_script):
+        """
+        スコア登録時を設定
+        :param put_score_trigger_script: スコア登録時
+        :type put_score_trigger_script: unicode
+        """
+        self.__put_score_trigger_script = put_score_trigger_script
+
+    def with_put_score_trigger_script(self, put_score_trigger_script):
+        """
+        スコア登録時を設定
+        :param put_score_trigger_script: スコア登録時
+        :type put_score_trigger_script: unicode
+        :return: this
+        :rtype: UpdateRankingTableRequest
+        """
+        self.set_put_score_trigger_script(put_score_trigger_script)
+        return self
+
+    def get_put_score_done_trigger_script(self):
+        """
+        スコア登録完了時 に実行されるGS2-Scriptを取得
+        :return: スコア登録完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__put_score_done_trigger_script
+
+    def set_put_score_done_trigger_script(self, put_score_done_trigger_script):
+        """
+        スコア登録完了時 に実行されるGS2-Scriptを設定
+        :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
+        :type put_score_done_trigger_script: unicode
+        """
+        self.__put_score_done_trigger_script = put_score_done_trigger_script
+
+    def with_put_score_done_trigger_script(self, put_score_done_trigger_script):
+        """
+        スコア登録完了時 に実行されるGS2-Scriptを設定
+        :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
+        :type put_score_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateRankingTableRequest
+        """
+        self.set_put_score_done_trigger_script(put_score_done_trigger_script)
+        return self
+
+    def get_calculate_ranking_done_trigger_script(self):
+        """
+        集計処理完了時 に実行されるGS2-Scriptを取得
+        :return: 集計処理完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__calculate_ranking_done_trigger_script
+
+    def set_calculate_ranking_done_trigger_script(self, calculate_ranking_done_trigger_script):
+        """
+        集計処理完了時 に実行されるGS2-Scriptを設定
+        :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
+        :type calculate_ranking_done_trigger_script: unicode
+        """
+        self.__calculate_ranking_done_trigger_script = calculate_ranking_done_trigger_script
+
+    def with_calculate_ranking_done_trigger_script(self, calculate_ranking_done_trigger_script):
+        """
+        集計処理完了時 に実行されるGS2-Scriptを設定
+        :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
+        :type calculate_ranking_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateRankingTableRequest
+        """
+        self.set_calculate_ranking_done_trigger_script(calculate_ranking_done_trigger_script)
         return self

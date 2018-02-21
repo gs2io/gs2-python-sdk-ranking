@@ -32,14 +32,20 @@ class CreateGameModeRequest(Gs2BasicRequest):
         super(CreateGameModeRequest, self).__init__(params)
         if params is None:
             self.__ranking_table_name = None
-            self.__asc = None
             self.__game_mode = None
+            self.__asc = None
             self.__calc_interval = None
+            self.__put_score_trigger_script = None
+            self.__put_score_done_trigger_script = None
+            self.__calculate_ranking_done_trigger_script = None
         else:
             self.set_ranking_table_name(params['rankingTableName'] if 'rankingTableName' in params.keys() else None)
-            self.set_asc(params['asc'] if 'asc' in params.keys() else None)
             self.set_game_mode(params['gameMode'] if 'gameMode' in params.keys() else None)
+            self.set_asc(params['asc'] if 'asc' in params.keys() else None)
             self.set_calc_interval(params['calcInterval'] if 'calcInterval' in params.keys() else None)
+            self.set_put_score_trigger_script(params['putScoreTriggerScript'] if 'putScoreTriggerScript' in params.keys() else None)
+            self.set_put_score_done_trigger_script(params['putScoreDoneTriggerScript'] if 'putScoreDoneTriggerScript' in params.keys() else None)
+            self.set_calculate_ranking_done_trigger_script(params['calculateRankingDoneTriggerScript'] if 'calculateRankingDoneTriggerScript' in params.keys() else None)
 
     def get_ranking_table_name(self):
         """
@@ -66,33 +72,6 @@ class CreateGameModeRequest(Gs2BasicRequest):
         :rtype: CreateGameModeRequest
         """
         self.set_ranking_table_name(ranking_table_name)
-        return self
-
-    def get_asc(self):
-        """
-        スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は trueを取得
-        :return: スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は true
-        :rtype: bool
-        """
-        return self.__asc
-
-    def set_asc(self, asc):
-        """
-        スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は trueを設定
-        :param asc: スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は true
-        :type asc: bool
-        """
-        self.__asc = asc
-
-    def with_asc(self, asc):
-        """
-        スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は trueを設定
-        :param asc: スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は true
-        :type asc: bool
-        :return: this
-        :rtype: CreateGameModeRequest
-        """
-        self.set_asc(asc)
         return self
 
     def get_game_mode(self):
@@ -122,6 +101,33 @@ class CreateGameModeRequest(Gs2BasicRequest):
         self.set_game_mode(game_mode)
         return self
 
+    def get_asc(self):
+        """
+        スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は trueを取得
+        :return: スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は true
+        :rtype: bool
+        """
+        return self.__asc
+
+    def set_asc(self, asc):
+        """
+        スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は trueを設定
+        :param asc: スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は true
+        :type asc: bool
+        """
+        self.__asc = asc
+
+    def with_asc(self, asc):
+        """
+        スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は trueを設定
+        :param asc: スコアを順位付けするときに小さいスコアのほうがハイスコアな場合は true
+        :type asc: bool
+        :return: this
+        :rtype: CreateGameModeRequest
+        """
+        self.set_asc(asc)
+        return self
+
     def get_calc_interval(self):
         """
         このゲームモードのランキング集計間隔を分単位で指定しますを取得
@@ -147,4 +153,85 @@ class CreateGameModeRequest(Gs2BasicRequest):
         :rtype: CreateGameModeRequest
         """
         self.set_calc_interval(calc_interval)
+        return self
+
+    def get_put_score_trigger_script(self):
+        """
+        スコア登録時 に実行されるGS2-Scriptを取得
+        :return: スコア登録時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__put_score_trigger_script
+
+    def set_put_score_trigger_script(self, put_score_trigger_script):
+        """
+        スコア登録時 に実行されるGS2-Scriptを設定
+        :param put_score_trigger_script: スコア登録時 に実行されるGS2-Script
+        :type put_score_trigger_script: unicode
+        """
+        self.__put_score_trigger_script = put_score_trigger_script
+
+    def with_put_score_trigger_script(self, put_score_trigger_script):
+        """
+        スコア登録時 に実行されるGS2-Scriptを設定
+        :param put_score_trigger_script: スコア登録時 に実行されるGS2-Script
+        :type put_score_trigger_script: unicode
+        :return: this
+        :rtype: CreateGameModeRequest
+        """
+        self.set_put_score_trigger_script(put_score_trigger_script)
+        return self
+
+    def get_put_score_done_trigger_script(self):
+        """
+        スコア登録完了時 に実行されるGS2-Scriptを取得
+        :return: スコア登録完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__put_score_done_trigger_script
+
+    def set_put_score_done_trigger_script(self, put_score_done_trigger_script):
+        """
+        スコア登録完了時 に実行されるGS2-Scriptを設定
+        :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
+        :type put_score_done_trigger_script: unicode
+        """
+        self.__put_score_done_trigger_script = put_score_done_trigger_script
+
+    def with_put_score_done_trigger_script(self, put_score_done_trigger_script):
+        """
+        スコア登録完了時 に実行されるGS2-Scriptを設定
+        :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
+        :type put_score_done_trigger_script: unicode
+        :return: this
+        :rtype: CreateGameModeRequest
+        """
+        self.set_put_score_done_trigger_script(put_score_done_trigger_script)
+        return self
+
+    def get_calculate_ranking_done_trigger_script(self):
+        """
+        集計処理完了時 に実行されるGS2-Scriptを取得
+        :return: 集計処理完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__calculate_ranking_done_trigger_script
+
+    def set_calculate_ranking_done_trigger_script(self, calculate_ranking_done_trigger_script):
+        """
+        集計処理完了時 に実行されるGS2-Scriptを設定
+        :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
+        :type calculate_ranking_done_trigger_script: unicode
+        """
+        self.__calculate_ranking_done_trigger_script = calculate_ranking_done_trigger_script
+
+    def with_calculate_ranking_done_trigger_script(self, calculate_ranking_done_trigger_script):
+        """
+        集計処理完了時 に実行されるGS2-Scriptを設定
+        :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
+        :type calculate_ranking_done_trigger_script: unicode
+        :return: this
+        :rtype: CreateGameModeRequest
+        """
+        self.set_calculate_ranking_done_trigger_script(calculate_ranking_done_trigger_script)
         return self

@@ -18,52 +18,20 @@ class Score(object):
 
     def __init__(self, params=None):
         if params is None:
-            self.__score = None
-            self.__meta = None
             self.__ranking_table_id = None
-            self.__update_at = None
             self.__game_mode = None
             self.__user_id = None
+            self.__score = None
+            self.__meta = None
+            self.__update_at = None
         else:
-            self.set_score(params['score'] if 'score' in params.keys() else None)
-            self.set_meta(params['meta'] if 'meta' in params.keys() else None)
             self.set_ranking_table_id(params['rankingTableId'] if 'rankingTableId' in params.keys() else None)
-            self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
             self.set_game_mode(params['gameMode'] if 'gameMode' in params.keys() else None)
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+            self.set_score(params['score'] if 'score' in params.keys() else None)
+            self.set_meta(params['meta'] if 'meta' in params.keys() else None)
+            self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
 
-
-    def get_score(self):
-        """
-        スコア値を取得
-        :return: スコア値
-        :rtype: int
-        """
-        return self.__score
-
-    def set_score(self, score):
-        """
-        スコア値を設定
-        :param score: スコア値
-        :type score: int
-        """
-        self.__score = score
-
-    def get_meta(self):
-        """
-        メタデータを取得
-        :return: メタデータ
-        :rtype: unicode
-        """
-        return self.__meta
-
-    def set_meta(self, meta):
-        """
-        メタデータを設定
-        :param meta: メタデータ
-        :type meta: unicode
-        """
-        self.__meta = meta
 
     def get_ranking_table_id(self):
         """
@@ -80,22 +48,6 @@ class Score(object):
         :type ranking_table_id: unicode
         """
         self.__ranking_table_id = ranking_table_id
-
-    def get_update_at(self):
-        """
-        登録日時(エポック秒)を取得
-        :return: 登録日時(エポック秒)
-        :rtype: int
-        """
-        return self.__update_at
-
-    def set_update_at(self, update_at):
-        """
-        登録日時(エポック秒)を設定
-        :param update_at: 登録日時(エポック秒)
-        :type update_at: int
-        """
-        self.__update_at = update_at
 
     def get_game_mode(self):
         """
@@ -129,12 +81,60 @@ class Score(object):
         """
         self.__user_id = user_id
 
+    def get_score(self):
+        """
+        スコア値を取得
+        :return: スコア値
+        :rtype: int
+        """
+        return self.__score
+
+    def set_score(self, score):
+        """
+        スコア値を設定
+        :param score: スコア値
+        :type score: int
+        """
+        self.__score = score
+
+    def get_meta(self):
+        """
+        メタデータを取得
+        :return: メタデータ
+        :rtype: unicode
+        """
+        return self.__meta
+
+    def set_meta(self, meta):
+        """
+        メタデータを設定
+        :param meta: メタデータ
+        :type meta: unicode
+        """
+        self.__meta = meta
+
+    def get_update_at(self):
+        """
+        登録日時(エポック秒)を取得
+        :return: 登録日時(エポック秒)
+        :rtype: int
+        """
+        return self.__update_at
+
+    def set_update_at(self, update_at):
+        """
+        登録日時(エポック秒)を設定
+        :param update_at: 登録日時(エポック秒)
+        :type update_at: int
+        """
+        self.__update_at = update_at
+
     def to_dict(self):
         return { 
-            "score": self.__score,
-            "meta": self.__meta,
             "rankingTableId": self.__ranking_table_id,
-            "updateAt": self.__update_at,
             "gameMode": self.__game_mode,
             "userId": self.__user_id,
+            "score": self.__score,
+            "meta": self.__meta,
+            "updateAt": self.__update_at,
         }

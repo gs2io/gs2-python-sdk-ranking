@@ -19,18 +19,18 @@ class RankingScore(object):
     def __init__(self, params=None):
         if params is None:
             self.__index = None
+            self.__rank = None
+            self.__user_id = None
             self.__score = None
             self.__meta = None
             self.__update_at = None
-            self.__user_id = None
-            self.__rank = None
         else:
             self.set_index(params['index'] if 'index' in params.keys() else None)
+            self.set_rank(params['rank'] if 'rank' in params.keys() else None)
+            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
             self.set_score(params['score'] if 'score' in params.keys() else None)
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
-            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
-            self.set_rank(params['rank'] if 'rank' in params.keys() else None)
 
 
     def get_index(self):
@@ -48,6 +48,38 @@ class RankingScore(object):
         :type index: long
         """
         self.__index = index
+
+    def get_rank(self):
+        """
+        同点同順位を採用した場合の順位を取得
+        :return: 同点同順位を採用した場合の順位
+        :rtype: long
+        """
+        return self.__rank
+
+    def set_rank(self, rank):
+        """
+        同点同順位を採用した場合の順位を設定
+        :param rank: 同点同順位を採用した場合の順位
+        :type rank: long
+        """
+        self.__rank = rank
+
+    def get_user_id(self):
+        """
+        ユーザIDを取得
+        :return: ユーザID
+        :rtype: unicode
+        """
+        return self.__user_id
+
+    def set_user_id(self, user_id):
+        """
+        ユーザIDを設定
+        :param user_id: ユーザID
+        :type user_id: unicode
+        """
+        self.__user_id = user_id
 
     def get_score(self):
         """
@@ -97,44 +129,12 @@ class RankingScore(object):
         """
         self.__update_at = update_at
 
-    def get_user_id(self):
-        """
-        ユーザIDを取得
-        :return: ユーザID
-        :rtype: unicode
-        """
-        return self.__user_id
-
-    def set_user_id(self, user_id):
-        """
-        ユーザIDを設定
-        :param user_id: ユーザID
-        :type user_id: unicode
-        """
-        self.__user_id = user_id
-
-    def get_rank(self):
-        """
-        同点同順位を採用した場合の順位を取得
-        :return: 同点同順位を採用した場合の順位
-        :rtype: long
-        """
-        return self.__rank
-
-    def set_rank(self, rank):
-        """
-        同点同順位を採用した場合の順位を設定
-        :param rank: 同点同順位を採用した場合の順位
-        :type rank: long
-        """
-        self.__rank = rank
-
     def to_dict(self):
         return { 
             "index": self.__index,
+            "rank": self.__rank,
+            "userId": self.__user_id,
             "score": self.__score,
             "meta": self.__meta,
             "updateAt": self.__update_at,
-            "userId": self.__user_id,
-            "rank": self.__rank,
         }

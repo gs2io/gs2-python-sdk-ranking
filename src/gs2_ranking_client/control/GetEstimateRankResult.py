@@ -26,17 +26,9 @@ class GetEstimateRankResult(object):
         :type response: dict
         """
         
-        self.__max = long(response['max']) if 'max' in response.keys() and response['max'] is not None else None
-        
         self.__min = long(response['min']) if 'min' in response.keys() and response['min'] is not None else None
-
-    def get_max(self):
-        """
-        推定最大順位を取得
-        :return: 推定最大順位
-        :rtype: long
-        """
-        return self.__max
+        
+        self.__max = long(response['max']) if 'max' in response.keys() and response['max'] is not None else None
 
     def get_min(self):
         """
@@ -46,6 +38,14 @@ class GetEstimateRankResult(object):
         """
         return self.__min
 
+    def get_max(self):
+        """
+        推定最大順位を取得
+        :return: 推定最大順位
+        :rtype: long
+        """
+        return self.__max
+
     def to_dict(self):
         """
         辞書配列に変換
@@ -53,8 +53,8 @@ class GetEstimateRankResult(object):
         :rtype: dict
         """
         return { 
-            'max': self.__max,
-        
             'min': self.__min,
+        
+            'max': self.__max,
         
         }
