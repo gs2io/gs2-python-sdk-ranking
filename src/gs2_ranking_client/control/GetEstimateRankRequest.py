@@ -32,11 +32,15 @@ class GetEstimateRankRequest(Gs2BasicRequest):
         super(GetEstimateRankRequest, self).__init__(params)
         if params is None:
             self.__ranking_table_name = None
-            self.__game_mode = None
-            self.__score = None
         else:
             self.set_ranking_table_name(params['rankingTableName'] if 'rankingTableName' in params.keys() else None)
+        if params is None:
+            self.__game_mode = None
+        else:
             self.set_game_mode(params['gameMode'] if 'gameMode' in params.keys() else None)
+        if params is None:
+            self.__score = None
+        else:
             self.set_score(params['score'] if 'score' in params.keys() else None)
 
     def get_ranking_table_name(self):
@@ -53,6 +57,8 @@ class GetEstimateRankRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
+        if not isinstance(ranking_table_name, unicode):
+            raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
     def with_ranking_table_name(self, ranking_table_name):
@@ -80,6 +86,8 @@ class GetEstimateRankRequest(Gs2BasicRequest):
         :param game_mode: ゲームモードの名前を指定します。
         :type game_mode: unicode
         """
+        if not isinstance(game_mode, unicode):
+            raise TypeError(type(game_mode))
         self.__game_mode = game_mode
 
     def with_game_mode(self, game_mode):
@@ -97,7 +105,7 @@ class GetEstimateRankRequest(Gs2BasicRequest):
         """
         スコア値を取得
         :return: スコア値
-        :rtype: int
+        :rtype: long
         """
         return self.__score
 
@@ -105,15 +113,17 @@ class GetEstimateRankRequest(Gs2BasicRequest):
         """
         スコア値を設定
         :param score: スコア値
-        :type score: int
+        :type score: long
         """
+        if not isinstance(score, long):
+            raise TypeError(type(score))
         self.__score = score
 
     def with_score(self, score):
         """
         スコア値を設定
         :param score: スコア値
-        :type score: int
+        :type score: long
         :return: this
         :rtype: GetEstimateRankRequest
         """

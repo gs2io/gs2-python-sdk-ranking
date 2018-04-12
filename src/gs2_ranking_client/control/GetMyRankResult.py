@@ -25,9 +25,7 @@ class GetMyRankResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__index = long(response['index']) if 'index' in response.keys() and response['index'] is not None else None
-        
         self.__rank = long(response['rank']) if 'rank' in response.keys() and response['rank'] is not None else None
 
     def get_index(self):
@@ -52,9 +50,7 @@ class GetMyRankResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'index': self.__index,
-        
             'rank': self.__rank,
-        
         }

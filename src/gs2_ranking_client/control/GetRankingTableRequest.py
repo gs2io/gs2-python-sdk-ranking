@@ -49,6 +49,8 @@ class GetRankingTableRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
+        if not isinstance(ranking_table_name, unicode):
+            raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
     def with_ranking_table_name(self, ranking_table_name):

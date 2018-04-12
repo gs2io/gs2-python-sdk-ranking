@@ -103,7 +103,7 @@ class PutScoreRequest(Gs2UserRequest):
         """
         スコア値を取得
         :return: スコア値
-        :rtype: int
+        :rtype: long
         """
         return self.__score
 
@@ -111,9 +111,9 @@ class PutScoreRequest(Gs2UserRequest):
         """
         スコア値を設定
         :param score: スコア値
-        :type score: int
+        :type score: long
         """
-        if not isinstance(score, int):
+        if not isinstance(score, long):
             raise TypeError(type(score))
         self.__score = score
 
@@ -121,7 +121,7 @@ class PutScoreRequest(Gs2UserRequest):
         """
         スコア値を設定
         :param score: スコア値
-        :type score: int
+        :type score: long
         :return: this
         :rtype: PutScoreRequest
         """

@@ -32,9 +32,11 @@ class GetGameModeRequest(Gs2BasicRequest):
         super(GetGameModeRequest, self).__init__(params)
         if params is None:
             self.__ranking_table_name = None
-            self.__game_mode = None
         else:
             self.set_ranking_table_name(params['rankingTableName'] if 'rankingTableName' in params.keys() else None)
+        if params is None:
+            self.__game_mode = None
+        else:
             self.set_game_mode(params['gameMode'] if 'gameMode' in params.keys() else None)
 
     def get_ranking_table_name(self):
@@ -51,6 +53,8 @@ class GetGameModeRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
+        if not isinstance(ranking_table_name, unicode):
+            raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
     def with_ranking_table_name(self, ranking_table_name):
@@ -78,6 +82,8 @@ class GetGameModeRequest(Gs2BasicRequest):
         :param game_mode: ゲームモードの名前を指定します。
         :type game_mode: unicode
         """
+        if not isinstance(game_mode, unicode):
+            raise TypeError(type(game_mode))
         self.__game_mode = game_mode
 
     def with_game_mode(self, game_mode):

@@ -25,9 +25,7 @@ class GetEstimateRankResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__min = long(response['min']) if 'min' in response.keys() and response['min'] is not None else None
-        
         self.__max = long(response['max']) if 'max' in response.keys() and response['max'] is not None else None
 
     def get_min(self):
@@ -52,9 +50,7 @@ class GetEstimateRankResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'min': self.__min,
-        
             'max': self.__max,
-        
         }

@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class RankingScore(object):
 
     def __init__(self, params=None):
@@ -31,7 +32,6 @@ class RankingScore(object):
             self.set_score(params['score'] if 'score' in params.keys() else None)
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
-
 
     def get_index(self):
         """
@@ -85,7 +85,7 @@ class RankingScore(object):
         """
         スコア値を取得
         :return: スコア値
-        :rtype: int
+        :rtype: long
         """
         return self.__score
 
@@ -93,7 +93,7 @@ class RankingScore(object):
         """
         スコア値を設定
         :param score: スコア値
-        :type score: int
+        :type score: long
         """
         self.__score = score
 
@@ -130,7 +130,7 @@ class RankingScore(object):
         self.__update_at = update_at
 
     def to_dict(self):
-        return { 
+        return {
             "index": self.__index,
             "rank": self.__rank,
             "userId": self.__user_id,

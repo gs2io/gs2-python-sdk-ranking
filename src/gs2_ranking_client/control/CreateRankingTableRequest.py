@@ -32,15 +32,23 @@ class CreateRankingTableRequest(Gs2BasicRequest):
         super(CreateRankingTableRequest, self).__init__(params)
         if params is None:
             self.__name = None
-            self.__description = None
-            self.__put_score_trigger_script = None
-            self.__put_score_done_trigger_script = None
-            self.__calculate_ranking_done_trigger_script = None
         else:
             self.set_name(params['name'] if 'name' in params.keys() else None)
+        if params is None:
+            self.__description = None
+        else:
             self.set_description(params['description'] if 'description' in params.keys() else None)
+        if params is None:
+            self.__put_score_trigger_script = None
+        else:
             self.set_put_score_trigger_script(params['putScoreTriggerScript'] if 'putScoreTriggerScript' in params.keys() else None)
+        if params is None:
+            self.__put_score_done_trigger_script = None
+        else:
             self.set_put_score_done_trigger_script(params['putScoreDoneTriggerScript'] if 'putScoreDoneTriggerScript' in params.keys() else None)
+        if params is None:
+            self.__calculate_ranking_done_trigger_script = None
+        else:
             self.set_calculate_ranking_done_trigger_script(params['calculateRankingDoneTriggerScript'] if 'calculateRankingDoneTriggerScript' in params.keys() else None)
 
     def get_name(self):
@@ -57,6 +65,8 @@ class CreateRankingTableRequest(Gs2BasicRequest):
         :param name: ランキングテーブルの名前
         :type name: unicode
         """
+        if not isinstance(name, unicode):
+            raise TypeError(type(name))
         self.__name = name
 
     def with_name(self, name):
@@ -84,6 +94,8 @@ class CreateRankingTableRequest(Gs2BasicRequest):
         :param description: 説明文
         :type description: unicode
         """
+        if not isinstance(description, unicode):
+            raise TypeError(type(description))
         self.__description = description
 
     def with_description(self, description):
@@ -111,6 +123,8 @@ class CreateRankingTableRequest(Gs2BasicRequest):
         :param put_score_trigger_script: スコア登録時 に実行されるGS2-Script
         :type put_score_trigger_script: unicode
         """
+        if not isinstance(put_score_trigger_script, unicode):
+            raise TypeError(type(put_score_trigger_script))
         self.__put_score_trigger_script = put_score_trigger_script
 
     def with_put_score_trigger_script(self, put_score_trigger_script):
@@ -138,6 +152,8 @@ class CreateRankingTableRequest(Gs2BasicRequest):
         :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
         :type put_score_done_trigger_script: unicode
         """
+        if not isinstance(put_score_done_trigger_script, unicode):
+            raise TypeError(type(put_score_done_trigger_script))
         self.__put_score_done_trigger_script = put_score_done_trigger_script
 
     def with_put_score_done_trigger_script(self, put_score_done_trigger_script):
@@ -165,6 +181,8 @@ class CreateRankingTableRequest(Gs2BasicRequest):
         :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
         :type calculate_ranking_done_trigger_script: unicode
         """
+        if not isinstance(calculate_ranking_done_trigger_script, unicode):
+            raise TypeError(type(calculate_ranking_done_trigger_script))
         self.__calculate_ranking_done_trigger_script = calculate_ranking_done_trigger_script
 
     def with_calculate_ranking_done_trigger_script(self, calculate_ranking_done_trigger_script):

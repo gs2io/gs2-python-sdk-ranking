@@ -32,17 +32,27 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         super(UpdateGameModeRequest, self).__init__(params)
         if params is None:
             self.__ranking_table_name = None
-            self.__game_mode = None
-            self.__calc_interval = None
-            self.__put_score_trigger_script = None
-            self.__put_score_done_trigger_script = None
-            self.__calculate_ranking_done_trigger_script = None
         else:
             self.set_ranking_table_name(params['rankingTableName'] if 'rankingTableName' in params.keys() else None)
+        if params is None:
+            self.__game_mode = None
+        else:
             self.set_game_mode(params['gameMode'] if 'gameMode' in params.keys() else None)
+        if params is None:
+            self.__calc_interval = None
+        else:
             self.set_calc_interval(params['calcInterval'] if 'calcInterval' in params.keys() else None)
+        if params is None:
+            self.__put_score_trigger_script = None
+        else:
             self.set_put_score_trigger_script(params['putScoreTriggerScript'] if 'putScoreTriggerScript' in params.keys() else None)
+        if params is None:
+            self.__put_score_done_trigger_script = None
+        else:
             self.set_put_score_done_trigger_script(params['putScoreDoneTriggerScript'] if 'putScoreDoneTriggerScript' in params.keys() else None)
+        if params is None:
+            self.__calculate_ranking_done_trigger_script = None
+        else:
             self.set_calculate_ranking_done_trigger_script(params['calculateRankingDoneTriggerScript'] if 'calculateRankingDoneTriggerScript' in params.keys() else None)
 
     def get_ranking_table_name(self):
@@ -59,6 +69,8 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
+        if not isinstance(ranking_table_name, unicode):
+            raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
     def with_ranking_table_name(self, ranking_table_name):
@@ -86,6 +98,8 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param game_mode: ゲームモードの名前を指定します。
         :type game_mode: unicode
         """
+        if not isinstance(game_mode, unicode):
+            raise TypeError(type(game_mode))
         self.__game_mode = game_mode
 
     def with_game_mode(self, game_mode):
@@ -113,6 +127,8 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param calc_interval: このゲームモードのランキング集計間隔を分単位で指定します
         :type calc_interval: int
         """
+        if not isinstance(calc_interval, int):
+            raise TypeError(type(calc_interval))
         self.__calc_interval = calc_interval
 
     def with_calc_interval(self, calc_interval):
@@ -140,6 +156,8 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param put_score_trigger_script: スコア登録時 に実行されるGS2-Script
         :type put_score_trigger_script: unicode
         """
+        if not isinstance(put_score_trigger_script, unicode):
+            raise TypeError(type(put_score_trigger_script))
         self.__put_score_trigger_script = put_score_trigger_script
 
     def with_put_score_trigger_script(self, put_score_trigger_script):
@@ -167,6 +185,8 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
         :type put_score_done_trigger_script: unicode
         """
+        if not isinstance(put_score_done_trigger_script, unicode):
+            raise TypeError(type(put_score_done_trigger_script))
         self.__put_score_done_trigger_script = put_score_done_trigger_script
 
     def with_put_score_done_trigger_script(self, put_score_done_trigger_script):
@@ -194,6 +214,8 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
         :type calculate_ranking_done_trigger_script: unicode
         """
+        if not isinstance(calculate_ranking_done_trigger_script, unicode):
+            raise TypeError(type(calculate_ranking_done_trigger_script))
         self.__calculate_ranking_done_trigger_script = calculate_ranking_done_trigger_script
 
     def with_calculate_ranking_done_trigger_script(self, calculate_ranking_done_trigger_script):
