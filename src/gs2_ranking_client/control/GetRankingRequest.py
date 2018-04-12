@@ -61,7 +61,7 @@ class GetRankingRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
-        if not isinstance(ranking_table_name, unicode):
+        if ranking_table_name and not isinstance(ranking_table_name, unicode):
             raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
@@ -90,7 +90,7 @@ class GetRankingRequest(Gs2BasicRequest):
         :param game_mode: ゲームモードの名前を指定します。
         :type game_mode: unicode
         """
-        if not isinstance(game_mode, unicode):
+        if game_mode and not isinstance(game_mode, unicode):
             raise TypeError(type(game_mode))
         self.__game_mode = game_mode
 
@@ -119,7 +119,7 @@ class GetRankingRequest(Gs2BasicRequest):
         :param offset: ランキングの取得位置を指定します
         :type offset: int
         """
-        if not isinstance(offset, int):
+        if offset and not isinstance(offset, int):
             raise TypeError(type(offset))
         self.__offset = offset
 
@@ -148,7 +148,7 @@ class GetRankingRequest(Gs2BasicRequest):
         :param limit: ランキングの取得件数を指定します
         :type limit: int
         """
-        if not isinstance(limit, int):
+        if limit and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 
