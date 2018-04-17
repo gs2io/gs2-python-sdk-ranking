@@ -53,7 +53,7 @@ class GetGameModeRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
-        if ranking_table_name and not isinstance(ranking_table_name, unicode):
+        if ranking_table_name and not (isinstance(ranking_table_name, str) or isinstance(ranking_table_name, unicode)):
             raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
@@ -82,7 +82,7 @@ class GetGameModeRequest(Gs2BasicRequest):
         :param game_mode: ゲームモードの名前を指定します。
         :type game_mode: unicode
         """
-        if game_mode and not isinstance(game_mode, unicode):
+        if game_mode and not (isinstance(game_mode, str) or isinstance(game_mode, unicode)):
             raise TypeError(type(game_mode))
         self.__game_mode = game_mode
 
