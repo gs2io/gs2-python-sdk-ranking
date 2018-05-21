@@ -16,6 +16,7 @@
 
 from gs2_core_client.Gs2Constant import Gs2Constant
 from gs2_core_client.AbstractGs2Client import AbstractGs2Client
+from aws_sdk_for_serverless.common import url_encoder
 
 
 class Gs2RankingClient(AbstractGs2Client):
@@ -60,7 +61,7 @@ class Gs2RankingClient(AbstractGs2Client):
         from gs2_ranking_client.control.CreateGameModeRequest import CreateGameModeRequest
         from gs2_ranking_client.control.CreateGameModeResult import CreateGameModeResult
         return CreateGameModeResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode",
             service=self.ENDPOINT,
             component=CreateGameModeRequest.Constant.MODULE,
             target_function=CreateGameModeRequest.Constant.FUNCTION,
@@ -82,7 +83,7 @@ class Gs2RankingClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.DeleteGameModeRequest import DeleteGameModeRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "",
             service=self.ENDPOINT,
             component=DeleteGameModeRequest.Constant.MODULE,
             target_function=DeleteGameModeRequest.Constant.FUNCTION,
@@ -111,7 +112,7 @@ class Gs2RankingClient(AbstractGs2Client):
 
         from gs2_ranking_client.control.DescribeGameModeResult import DescribeGameModeResult
         return DescribeGameModeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode",
             service=self.ENDPOINT,
             component=DescribeGameModeRequest.Constant.MODULE,
             target_function=DescribeGameModeRequest.Constant.FUNCTION,
@@ -137,7 +138,7 @@ class Gs2RankingClient(AbstractGs2Client):
 
         from gs2_ranking_client.control.GetGameModeResult import GetGameModeResult
         return GetGameModeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "",
             service=self.ENDPOINT,
             component=GetGameModeRequest.Constant.MODULE,
             target_function=GetGameModeRequest.Constant.FUNCTION,
@@ -170,7 +171,7 @@ class Gs2RankingClient(AbstractGs2Client):
         from gs2_ranking_client.control.UpdateGameModeRequest import UpdateGameModeRequest
         from gs2_ranking_client.control.UpdateGameModeResult import UpdateGameModeResult
         return UpdateGameModeResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "",
             service=self.ENDPOINT,
             component=UpdateGameModeRequest.Constant.MODULE,
             target_function=UpdateGameModeRequest.Constant.FUNCTION,
@@ -228,7 +229,7 @@ class Gs2RankingClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.DeleteRankingTableRequest import DeleteRankingTableRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "",
             service=self.ENDPOINT,
             component=DeleteRankingTableRequest.Constant.MODULE,
             target_function=DeleteRankingTableRequest.Constant.FUNCTION,
@@ -282,7 +283,7 @@ class Gs2RankingClient(AbstractGs2Client):
 
         from gs2_ranking_client.control.GetRankingTableResult import GetRankingTableResult
         return GetRankingTableResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "",
             service=self.ENDPOINT,
             component=GetRankingTableRequest.Constant.MODULE,
             target_function=GetRankingTableRequest.Constant.FUNCTION,
@@ -316,7 +317,7 @@ class Gs2RankingClient(AbstractGs2Client):
         from gs2_ranking_client.control.UpdateRankingTableRequest import UpdateRankingTableRequest
         from gs2_ranking_client.control.UpdateRankingTableResult import UpdateRankingTableResult
         return UpdateRankingTableResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "",
             service=self.ENDPOINT,
             component=UpdateRankingTableRequest.Constant.MODULE,
             target_function=UpdateRankingTableRequest.Constant.FUNCTION,
@@ -343,7 +344,7 @@ class Gs2RankingClient(AbstractGs2Client):
 
         from gs2_ranking_client.control.GetEstimateRankResult import GetEstimateRankResult
         return GetEstimateRankResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking/estimate",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking/estimate",
             service=self.ENDPOINT,
             component=GetEstimateRankRequest.Constant.MODULE,
             target_function=GetEstimateRankRequest.Constant.FUNCTION,
@@ -370,7 +371,7 @@ class Gs2RankingClient(AbstractGs2Client):
 
         from gs2_ranking_client.control.GetMyRankResult import GetMyRankResult
         return GetMyRankResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking/rank",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking/rank",
             service=self.ENDPOINT,
             component=GetMyRankRequest.Constant.MODULE,
             target_function=GetMyRankRequest.Constant.FUNCTION,
@@ -398,7 +399,7 @@ class Gs2RankingClient(AbstractGs2Client):
 
         from gs2_ranking_client.control.GetRankingResult import GetRankingResult
         return GetRankingResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking",
             service=self.ENDPOINT,
             component=GetRankingRequest.Constant.MODULE,
             target_function=GetRankingRequest.Constant.FUNCTION,
@@ -429,7 +430,7 @@ class Gs2RankingClient(AbstractGs2Client):
         from gs2_ranking_client.control.PutScoreRequest import PutScoreRequest
         from gs2_ranking_client.control.PutScoreResult import PutScoreResult
         return PutScoreResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking",
             service=self.ENDPOINT,
             component=PutScoreRequest.Constant.MODULE,
             target_function=PutScoreRequest.Constant.FUNCTION,
