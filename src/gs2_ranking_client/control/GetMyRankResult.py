@@ -27,7 +27,6 @@ class GetMyRankResult(object):
         """
         self.__index = long(response['index']) if 'index' in response.keys() and response['index'] is not None else None
         self.__rank = long(response['rank']) if 'rank' in response.keys() and response['rank'] is not None else None
-
     def get_index(self):
         """
         先頭からの位置を取得
@@ -35,7 +34,6 @@ class GetMyRankResult(object):
         :rtype: long
         """
         return self.__index
-
     def get_rank(self):
         """
         同点同順位を採用した場合の順位を取得
@@ -43,6 +41,12 @@ class GetMyRankResult(object):
         :rtype: long
         """
         return self.__rank
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(GetMyRankResult, self).__getitem__(key)
 
     def to_dict(self):
         """

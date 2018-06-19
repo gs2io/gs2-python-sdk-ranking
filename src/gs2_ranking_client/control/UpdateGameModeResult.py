@@ -26,7 +26,6 @@ class UpdateGameModeResult(object):
         :type response: dict
         """
         self.__item = GameMode(response['item']) if 'item' in response.keys() and response['item'] is not None else None
-
     def get_item(self):
         """
         ゲームモードを取得
@@ -34,6 +33,12 @@ class UpdateGameModeResult(object):
         :rtype: GameMode
         """
         return self.__item
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(UpdateGameModeResult, self).__getitem__(key)
 
     def to_dict(self):
         """

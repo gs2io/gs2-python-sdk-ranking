@@ -129,6 +129,12 @@ class Score(object):
         """
         self.__update_at = update_at
 
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Score, self).__getitem__(key)
+
     def to_dict(self):
         return {
             "rankingTableId": self.__ranking_table_id,

@@ -27,7 +27,6 @@ class GetEstimateRankResult(object):
         """
         self.__min = long(response['min']) if 'min' in response.keys() and response['min'] is not None else None
         self.__max = long(response['max']) if 'max' in response.keys() and response['max'] is not None else None
-
     def get_min(self):
         """
         推定最小順位を取得
@@ -35,7 +34,6 @@ class GetEstimateRankResult(object):
         :rtype: long
         """
         return self.__min
-
     def get_max(self):
         """
         推定最大順位を取得
@@ -43,6 +41,12 @@ class GetEstimateRankResult(object):
         :rtype: long
         """
         return self.__max
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(GetEstimateRankResult, self).__getitem__(key)
 
     def to_dict(self):
         """
