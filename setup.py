@@ -6,7 +6,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='gs2-python-sdk-ranking',
-    version='1.1.9',
+    version='1.1.10',
     package_dir={'': 'src'},
     packages=[
         "",
@@ -14,6 +14,10 @@ setup(
         "gs2_ranking_client.control",
         "gs2_ranking_client.model",
     ],
+    install_requires=[
+        'gs2-python-sdk-core >= 1.1.10',
+    ],
+    tests_require=[],
     license='Apache License 2.0',
     description='GS2-Ranking SDK for Python.',
     url='https://gs2.io/',
