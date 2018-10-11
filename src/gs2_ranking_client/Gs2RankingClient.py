@@ -54,14 +54,13 @@ class Gs2RankingClient(AbstractGs2Client):
             body["putScoreDoneTriggerScript"] = request.get_put_score_done_trigger_script()
         if request.get_calculate_ranking_done_trigger_script() is not None:
             body["calculateRankingDoneTriggerScript"] = request.get_calculate_ranking_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.CreateGameModeRequest import CreateGameModeRequest
         from gs2_ranking_client.control.CreateGameModeResult import CreateGameModeResult
         return CreateGameModeResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode",
             service=self.ENDPOINT,
             component=CreateGameModeRequest.Constant.MODULE,
             target_function=CreateGameModeRequest.Constant.FUNCTION,
@@ -77,13 +76,12 @@ class Gs2RankingClient(AbstractGs2Client):
         :type request: gs2_ranking_client.control.DeleteGameModeRequest.DeleteGameModeRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.DeleteGameModeRequest import DeleteGameModeRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "",
             service=self.ENDPOINT,
             component=DeleteGameModeRequest.Constant.MODULE,
             target_function=DeleteGameModeRequest.Constant.FUNCTION,
@@ -99,20 +97,21 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.DescribeGameModeResult.DescribeGameModeResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.DescribeGameModeRequest import DescribeGameModeRequest
 
         from gs2_ranking_client.control.DescribeGameModeResult import DescribeGameModeResult
         return DescribeGameModeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode",
             service=self.ENDPOINT,
             component=DescribeGameModeRequest.Constant.MODULE,
             target_function=DescribeGameModeRequest.Constant.FUNCTION,
@@ -128,17 +127,15 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.GetGameModeResult.GetGameModeResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.GetGameModeRequest import GetGameModeRequest
 
         from gs2_ranking_client.control.GetGameModeResult import GetGameModeResult
         return GetGameModeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "",
             service=self.ENDPOINT,
             component=GetGameModeRequest.Constant.MODULE,
             target_function=GetGameModeRequest.Constant.FUNCTION,
@@ -164,14 +161,13 @@ class Gs2RankingClient(AbstractGs2Client):
             body["putScoreDoneTriggerScript"] = request.get_put_score_done_trigger_script()
         if request.get_calculate_ranking_done_trigger_script() is not None:
             body["calculateRankingDoneTriggerScript"] = request.get_calculate_ranking_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.UpdateGameModeRequest import UpdateGameModeRequest
         from gs2_ranking_client.control.UpdateGameModeResult import UpdateGameModeResult
         return UpdateGameModeResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "",
             service=self.ENDPOINT,
             component=UpdateGameModeRequest.Constant.MODULE,
             target_function=UpdateGameModeRequest.Constant.FUNCTION,
@@ -200,8 +196,7 @@ class Gs2RankingClient(AbstractGs2Client):
             body["putScoreDoneTriggerScript"] = request.get_put_score_done_trigger_script()
         if request.get_calculate_ranking_done_trigger_script() is not None:
             body["calculateRankingDoneTriggerScript"] = request.get_calculate_ranking_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.CreateRankingTableRequest import CreateRankingTableRequest
@@ -223,13 +218,12 @@ class Gs2RankingClient(AbstractGs2Client):
         :type request: gs2_ranking_client.control.DeleteRankingTableRequest.DeleteRankingTableRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.DeleteRankingTableRequest import DeleteRankingTableRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "",
             service=self.ENDPOINT,
             component=DeleteRankingTableRequest.Constant.MODULE,
             target_function=DeleteRankingTableRequest.Constant.FUNCTION,
@@ -245,12 +239,12 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.DescribeRankingTableResult.DescribeRankingTableResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.DescribeRankingTableRequest import DescribeRankingTableRequest
@@ -273,17 +267,15 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.GetRankingTableResult.GetRankingTableResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.GetRankingTableRequest import GetRankingTableRequest
 
         from gs2_ranking_client.control.GetRankingTableResult import GetRankingTableResult
         return GetRankingTableResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "",
             service=self.ENDPOINT,
             component=GetRankingTableRequest.Constant.MODULE,
             target_function=GetRankingTableRequest.Constant.FUNCTION,
@@ -310,14 +302,13 @@ class Gs2RankingClient(AbstractGs2Client):
             body["putScoreDoneTriggerScript"] = request.get_put_score_done_trigger_script()
         if request.get_calculate_ranking_done_trigger_script() is not None:
             body["calculateRankingDoneTriggerScript"] = request.get_calculate_ranking_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.UpdateRankingTableRequest import UpdateRankingTableRequest
         from gs2_ranking_client.control.UpdateRankingTableResult import UpdateRankingTableResult
         return UpdateRankingTableResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "",
             service=self.ENDPOINT,
             component=UpdateRankingTableRequest.Constant.MODULE,
             target_function=UpdateRankingTableRequest.Constant.FUNCTION,
@@ -333,18 +324,17 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.GetEstimateRankResult.GetEstimateRankResult
         """
-        query_strings = {
-            'score': request.get_score(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_score() is not None:
+            query_strings['score'] = request.get_score()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.GetEstimateRankRequest import GetEstimateRankRequest
 
         from gs2_ranking_client.control.GetEstimateRankResult import GetEstimateRankResult
         return GetEstimateRankResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking/estimate",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking/estimate",
             service=self.ENDPOINT,
             component=GetEstimateRankRequest.Constant.MODULE,
             target_function=GetEstimateRankRequest.Constant.FUNCTION,
@@ -360,18 +350,17 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.GetMyRankResult.GetMyRankResult
         """
-        query_strings = {
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.GetMyRankRequest import GetMyRankRequest
 
         from gs2_ranking_client.control.GetMyRankResult import GetMyRankResult
         return GetMyRankResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking/rank",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking/rank",
             service=self.ENDPOINT,
             component=GetMyRankRequest.Constant.MODULE,
             target_function=GetMyRankRequest.Constant.FUNCTION,
@@ -387,19 +376,19 @@ class Gs2RankingClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_ranking_client.control.GetRankingResult.GetRankingResult
         """
-        query_strings = {
-            'offset': request.get_offset(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_offset() is not None:
+            query_strings['offset'] = request.get_offset()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.GetRankingRequest import GetRankingRequest
 
         from gs2_ranking_client.control.GetRankingResult import GetRankingResult
         return GetRankingResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking",
             service=self.ENDPOINT,
             component=GetRankingRequest.Constant.MODULE,
             target_function=GetRankingRequest.Constant.FUNCTION,
@@ -422,15 +411,15 @@ class Gs2RankingClient(AbstractGs2Client):
 
         if request.get_meta() is not None:
             body["meta"] = request.get_meta()
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_ranking_client.control.PutScoreRequest import PutScoreRequest
         from gs2_ranking_client.control.PutScoreResult import PutScoreResult
         return PutScoreResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else url_encoder.encode(request.get_ranking_table_name()))) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else url_encoder.encode(request.get_game_mode()))) + "/ranking",
+            url=Gs2Constant.ENDPOINT_HOST + "/ranking/" + str(("null" if request.get_ranking_table_name() is None or request.get_ranking_table_name() == "" else request.get_ranking_table_name())) + "/mode/" + str(("null" if request.get_game_mode() is None or request.get_game_mode() == "" else request.get_game_mode())) + "/ranking",
             service=self.ENDPOINT,
             component=PutScoreRequest.Constant.MODULE,
             target_function=PutScoreRequest.Constant.FUNCTION,

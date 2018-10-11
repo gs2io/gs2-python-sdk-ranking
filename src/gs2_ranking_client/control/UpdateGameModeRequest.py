@@ -69,7 +69,7 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
-        if ranking_table_name and not (isinstance(ranking_table_name, str) or isinstance(ranking_table_name, unicode)):
+        if ranking_table_name is not None and not (isinstance(ranking_table_name, str) or isinstance(ranking_table_name, unicode)):
             raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
@@ -98,7 +98,7 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param game_mode: ゲームモードの名前を指定します。
         :type game_mode: unicode
         """
-        if game_mode and not (isinstance(game_mode, str) or isinstance(game_mode, unicode)):
+        if game_mode is not None and not (isinstance(game_mode, str) or isinstance(game_mode, unicode)):
             raise TypeError(type(game_mode))
         self.__game_mode = game_mode
 
@@ -127,7 +127,7 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param calc_interval: このゲームモードのランキング集計間隔を分単位で指定します
         :type calc_interval: int
         """
-        if calc_interval and not isinstance(calc_interval, int):
+        if calc_interval is not None and not isinstance(calc_interval, int):
             raise TypeError(type(calc_interval))
         self.__calc_interval = calc_interval
 
@@ -156,7 +156,7 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param put_score_trigger_script: スコア登録時 に実行されるGS2-Script
         :type put_score_trigger_script: unicode
         """
-        if put_score_trigger_script and not (isinstance(put_score_trigger_script, str) or isinstance(put_score_trigger_script, unicode)):
+        if put_score_trigger_script is not None and not (isinstance(put_score_trigger_script, str) or isinstance(put_score_trigger_script, unicode)):
             raise TypeError(type(put_score_trigger_script))
         self.__put_score_trigger_script = put_score_trigger_script
 
@@ -185,7 +185,7 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
         :type put_score_done_trigger_script: unicode
         """
-        if put_score_done_trigger_script and not (isinstance(put_score_done_trigger_script, str) or isinstance(put_score_done_trigger_script, unicode)):
+        if put_score_done_trigger_script is not None and not (isinstance(put_score_done_trigger_script, str) or isinstance(put_score_done_trigger_script, unicode)):
             raise TypeError(type(put_score_done_trigger_script))
         self.__put_score_done_trigger_script = put_score_done_trigger_script
 
@@ -214,7 +214,7 @@ class UpdateGameModeRequest(Gs2BasicRequest):
         :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
         :type calculate_ranking_done_trigger_script: unicode
         """
-        if calculate_ranking_done_trigger_script and not (isinstance(calculate_ranking_done_trigger_script, str) or isinstance(calculate_ranking_done_trigger_script, unicode)):
+        if calculate_ranking_done_trigger_script is not None and not (isinstance(calculate_ranking_done_trigger_script, str) or isinstance(calculate_ranking_done_trigger_script, unicode)):
             raise TypeError(type(calculate_ranking_done_trigger_script))
         self.__calculate_ranking_done_trigger_script = calculate_ranking_done_trigger_script
 

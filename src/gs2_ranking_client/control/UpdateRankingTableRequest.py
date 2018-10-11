@@ -65,7 +65,7 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         :param ranking_table_name: ランキングテーブルの名前を指定します。
         :type ranking_table_name: unicode
         """
-        if ranking_table_name and not (isinstance(ranking_table_name, str) or isinstance(ranking_table_name, unicode)):
+        if ranking_table_name is not None and not (isinstance(ranking_table_name, str) or isinstance(ranking_table_name, unicode)):
             raise TypeError(type(ranking_table_name))
         self.__ranking_table_name = ranking_table_name
 
@@ -94,7 +94,7 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         :param description: 説明文
         :type description: unicode
         """
-        if description and not (isinstance(description, str) or isinstance(description, unicode)):
+        if description is not None and not (isinstance(description, str) or isinstance(description, unicode)):
             raise TypeError(type(description))
         self.__description = description
 
@@ -123,7 +123,7 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         :param put_score_trigger_script: スコア登録時
         :type put_score_trigger_script: unicode
         """
-        if put_score_trigger_script and not (isinstance(put_score_trigger_script, str) or isinstance(put_score_trigger_script, unicode)):
+        if put_score_trigger_script is not None and not (isinstance(put_score_trigger_script, str) or isinstance(put_score_trigger_script, unicode)):
             raise TypeError(type(put_score_trigger_script))
         self.__put_score_trigger_script = put_score_trigger_script
 
@@ -152,7 +152,7 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         :param put_score_done_trigger_script: スコア登録完了時 に実行されるGS2-Script
         :type put_score_done_trigger_script: unicode
         """
-        if put_score_done_trigger_script and not (isinstance(put_score_done_trigger_script, str) or isinstance(put_score_done_trigger_script, unicode)):
+        if put_score_done_trigger_script is not None and not (isinstance(put_score_done_trigger_script, str) or isinstance(put_score_done_trigger_script, unicode)):
             raise TypeError(type(put_score_done_trigger_script))
         self.__put_score_done_trigger_script = put_score_done_trigger_script
 
@@ -181,7 +181,7 @@ class UpdateRankingTableRequest(Gs2BasicRequest):
         :param calculate_ranking_done_trigger_script: 集計処理完了時 に実行されるGS2-Script
         :type calculate_ranking_done_trigger_script: unicode
         """
-        if calculate_ranking_done_trigger_script and not (isinstance(calculate_ranking_done_trigger_script, str) or isinstance(calculate_ranking_done_trigger_script, unicode)):
+        if calculate_ranking_done_trigger_script is not None and not (isinstance(calculate_ranking_done_trigger_script, str) or isinstance(calculate_ranking_done_trigger_script, unicode)):
             raise TypeError(type(calculate_ranking_done_trigger_script))
         self.__calculate_ranking_done_trigger_script = calculate_ranking_done_trigger_script
 
